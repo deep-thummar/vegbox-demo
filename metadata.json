@@ -1,0 +1,6 @@
+{
+  "name": "VegBox - Farm-Fresh Vegetable Delivery",
+  "description": "Fresh vegetables delivered to your doorstep, directly from the farm. Complete e-commerce store with customer ordering, order tracking, and full admin management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
