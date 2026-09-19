@@ -1,34 +1,44 @@
-import React, { useState } from 'react';
-import { useStore } from '../../context/StoreContext';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  Truck, 
-  ShieldCheck, 
-  Sparkles, 
-  Send 
-} from 'lucide-react';
+import React, { useState } from "react";
+import { useStore } from "../../context/StoreContext";
+import { Logo } from "./Logo";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Truck,
+  ShieldCheck,
+  Sparkles,
+  Send,
+} from "lucide-react";
 
 export const Footer: React.FC = () => {
-  const { settings, cms, setRoute, setSelectedCategory, categories, showToast } = useStore();
-  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const {
+    settings,
+    cms,
+    setRoute,
+    setSelectedCategory,
+    categories,
+    showToast,
+  } = useStore();
+  const [newsletterEmail, setNewsletterEmail] = useState("");
 
   const handleNewsletter = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newsletterEmail.trim() || !newsletterEmail.includes('@')) {
-      showToast('Please enter a valid email address.', 'warning');
+    if (!newsletterEmail.trim() || !newsletterEmail.includes("@")) {
+      showToast("Please enter a valid email address.", "warning");
       return;
     }
-    showToast('Subscribed! You will receive morning harvest alerts and seasonal discounts.', 'success');
-    setNewsletterEmail('');
+    showToast(
+      "Subscribed! You will receive morning harvest alerts and seasonal discounts.",
+      "success",
+    );
+    setNewsletterEmail("");
   };
 
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-24 md:pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Value Props Strip */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pb-12 border-b border-slate-800">
           <div className="flex items-start space-x-3.5">
@@ -36,8 +46,12 @@ export const Footer: React.FC = () => {
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-white font-bold text-sm">Harvested at Dawn</h4>
-              <p className="text-xs text-slate-400 mt-0.5">Picked daily at 4:30 AM from verified regional partner farms.</p>
+              <h4 className="text-white font-bold text-sm">
+                Harvested at Dawn
+              </h4>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Picked daily at 4:30 AM from verified regional partner farms.
+              </p>
             </div>
           </div>
 
@@ -46,8 +60,13 @@ export const Footer: React.FC = () => {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-white font-bold text-sm">100% Chemical Free</h4>
-              <p className="text-xs text-slate-400 mt-0.5">Zero synthetic wax or carbide ripening sprays. Lab tested purity.</p>
+              <h4 className="text-white font-bold text-sm">
+                100% Chemical Free
+              </h4>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Zero synthetic wax or carbide ripening sprays. Lab tested
+                purity.
+              </p>
             </div>
           </div>
 
@@ -56,8 +75,13 @@ export const Footer: React.FC = () => {
               <Truck className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-white font-bold text-sm">3-Hour Doorstep Delivery</h4>
-              <p className="text-xs text-slate-400 mt-0.5">Temperature-monitored routes delivered in breathable paper crates.</p>
+              <h4 className="text-white font-bold text-sm">
+                3-Hour Doorstep Delivery
+              </h4>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Temperature-monitored routes delivered in breathable paper
+                crates.
+              </p>
             </div>
           </div>
 
@@ -66,33 +90,43 @@ export const Footer: React.FC = () => {
               <i className="fa-solid fa-arrow-rotate-left text-lg"></i>
             </div>
             <div>
-              <h4 className="text-white font-bold text-sm">No-Questions-Asked Return</h4>
-              <p className="text-xs text-slate-400 mt-0.5">If any veggie is not crisp or tender, get an instant replacement or refund.</p>
+              <h4 className="text-white font-bold text-sm">
+                No-Questions-Asked Return
+              </h4>
+              <p className="text-xs text-slate-400 mt-0.5">
+                If any veggie is not crisp or tender, get an instant replacement
+                or refund.
+              </p>
             </div>
           </div>
         </div>
 
         {/* Main Footer Links */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 py-12 border-b border-slate-800">
-          
           {/* Brand & About */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold shadow-md shadow-emerald-600/30">
-                <i className="fa-solid fa-leaf text-lg"></i>
-              </div>
+              <Logo className="w-16 h-16 shrink-0" />
               <div>
-                <span className="text-xl font-black tracking-tight text-white">{settings.siteName || 'VegBox'}</span>
-                <p className="text-[11px] text-emerald-400 font-semibold tracking-wider uppercase">Direct Farm Logistics</p>
+                <span className="text-xl font-black tracking-tight text-white">
+                  {settings.siteName || "VegBox"}
+                </span>
+                <p className="text-[11px] text-emerald-400 font-semibold tracking-wider uppercase">
+                  Direct Farm Logistics
+                </p>
               </div>
             </div>
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              {cms.footer?.description || cms.branding?.brandDescription || 'Delivering unadulterated farm-fresh vegetables directly to your doorstep in hours.'}
+              {cms.footer?.description ||
+                cms.branding?.brandDescription ||
+                "Delivering unadulterated farm-fresh vegetables directly to your doorstep in hours."}
             </p>
 
             <div className="pt-2">
-              <p className="text-xs font-semibold text-slate-200 mb-2">Subscribe for Daily Harvest Alerts & Offers</p>
+              <p className="text-xs font-semibold text-slate-200 mb-2">
+                Subscribe for Daily Harvest Alerts & Offers
+              </p>
               <form onSubmit={handleNewsletter} className="flex max-w-sm">
                 <input
                   type="email"
@@ -114,14 +148,16 @@ export const Footer: React.FC = () => {
 
           {/* Quick Categories */}
           <div>
-            <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-4">Fresh Categories</h4>
+            <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
+              Fresh Categories
+            </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
-              {categories.slice(0, 5).map(cat => (
+              {categories.slice(0, 5).map((cat) => (
                 <li key={cat.id}>
                   <button
                     onClick={() => {
                       setSelectedCategory(cat.id);
-                      setRoute('products');
+                      setRoute("products");
                     }}
                     className="hover:text-emerald-400 transition-colors text-left"
                   >
@@ -131,7 +167,7 @@ export const Footer: React.FC = () => {
               ))}
               <li>
                 <button
-                  onClick={() => setRoute('categories')}
+                  onClick={() => setRoute("categories")}
                   className="text-emerald-400 hover:underline font-semibold"
                 >
                   View All Categories →
@@ -142,30 +178,47 @@ export const Footer: React.FC = () => {
 
           {/* Quick Nav Links */}
           <div>
-            <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-4">Explore VegBox</h4>
+            <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
+              Explore VegBox
+            </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <button onClick={() => setRoute('products')} className="hover:text-emerald-400 transition-colors">
+                <button
+                  onClick={() => setRoute("products")}
+                  className="hover:text-emerald-400 transition-colors"
+                >
                   All Vegetables
                 </button>
               </li>
               <li>
-                <button onClick={() => setRoute('about')} className="hover:text-emerald-400 transition-colors">
+                <button
+                  onClick={() => setRoute("about")}
+                  className="hover:text-emerald-400 transition-colors"
+                >
                   Our Farm Story
                 </button>
               </li>
               <li>
-                <button onClick={() => setRoute('my-orders')} className="hover:text-emerald-400 transition-colors">
+                <button
+                  onClick={() => setRoute("my-orders")}
+                  className="hover:text-emerald-400 transition-colors"
+                >
                   Track Your Order
                 </button>
               </li>
               <li>
-                <button onClick={() => setRoute('contact')} className="hover:text-emerald-400 transition-colors">
+                <button
+                  onClick={() => setRoute("contact")}
+                  className="hover:text-emerald-400 transition-colors"
+                >
                   Contact Support
                 </button>
               </li>
               <li>
-                <button onClick={() => setRoute('admin')} className="text-amber-400 hover:text-amber-300 font-semibold flex items-center space-x-1">
+                <button
+                  onClick={() => setRoute("admin")}
+                  className="text-amber-400 hover:text-amber-300 font-semibold flex items-center space-x-1"
+                >
                   <ShieldCheck className="w-3 h-3" />
                   <span>Admin Portal</span>
                 </button>
@@ -175,19 +228,33 @@ export const Footer: React.FC = () => {
 
           {/* Farm Contact Details */}
           <div>
-            <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-4">Farm Hub</h4>
+            <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
+              Farm Hub
+            </h4>
             <div className="space-y-3 text-xs text-slate-400">
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>{settings.address}, {settings.cityState}</span>
+                <span>
+                  {settings.address}, {settings.cityState}
+                </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href={`tel:${settings.phone}`} className="hover:text-white transition-colors">{settings.phone}</a>
+                <a
+                  href={`tel:${settings.phone}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {settings.phone}
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href={`mailto:${settings.email}`} className="hover:text-white transition-colors">{settings.email}</a>
+                <a
+                  href={`mailto:${settings.email}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {settings.email}
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -195,12 +262,14 @@ export const Footer: React.FC = () => {
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>{cms.footer?.copyright || `© 2026 ${settings.siteName}. All rights reserved.`}</p>
+          <p>
+            {cms.footer?.copyright ||
+              `© 2026 ${settings.siteName}. All rights reserved.`}
+          </p>
           <div className="flex items-center space-x-4">
             <span className="flex items-center space-x-1 text-slate-400">
               <i className="fa-solid fa-lock text-emerald-500"></i>
@@ -210,7 +279,6 @@ export const Footer: React.FC = () => {
             <span>Made for Fresh Farm Lovers</span>
           </div>
         </div>
-
       </div>
     </footer>
   );
